@@ -1,0 +1,7 @@
+runs-*
+work_dir
+work_dir1
+*.pyc
+__pycache__/
+build/*
+data/*

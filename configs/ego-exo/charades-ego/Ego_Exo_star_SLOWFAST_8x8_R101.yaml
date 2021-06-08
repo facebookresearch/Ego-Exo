@@ -1,0 +1,17 @@
+_BASE_: "Ego_Exo_SLOWFAST_8x8_R101.yaml"
+TRAIN:
+  DATASET: charadeshandobj
+TEST:
+  DATASET: charadeshandobj
+BN:
+  USE_PRECISE_STATS: False
+MODEL:
+  MODEL_NAME: HandObjSlowFastHSlow
+HANDOBJ:
+  ENABLE: True
+  DETS_FOLDER: "data/aux_predictions/charades_ego_handobj_predicts"
+  HEAD_NUM_CONV: 1
+  HEAD_CONV_DIM: 512
+  HAND_LOSS_WEIGHT: 0.1
+  OBJ_LOSS_WEIGHT: 0.1
+  LOSS_MODE: "soft"

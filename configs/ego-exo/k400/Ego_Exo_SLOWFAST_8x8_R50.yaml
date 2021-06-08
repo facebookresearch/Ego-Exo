@@ -1,0 +1,35 @@
+_BASE_: "SLOWFAST_8x8_R50.yaml"
+TRAIN:
+  DATASET: kineticshandobjkd
+TEST:
+  DATASET: kineticshandobjkd
+BN:
+  USE_PRECISE_STATS: False
+MODEL:
+  ARCH: slowfast
+  MODEL_NAME: HandObjKdSlowFastHSlow
+  LOSS_FUNC: cross_entropy
+  DROPOUT_RATE: 0.0
+HANDOBJ:
+  ENABLE: True
+  DETS_FOLDER: "data/aux_predictions/k400_handobj_predicts"
+  HEAD_NUM_CONV: 1
+  HEAD_CONV_DIM: 512
+  HAND_LOSS_WEIGHT: 1.0
+  OBJ_LOSS_WEIGHT: 1.0
+  LOSS_MODE: "soft"
+  ALPHA: 1.0
+  BALANCE_LOSS: False
+  KD_LOSS: True
+KD:
+  MULTI: True
+  NUM_CLASSES_LIST: [2, 1000]
+  ALPHA_LIST: [0.1, 0.5]
+  T_LIST: [1.0, 1.0]
+  BALANCE_LOSS: False
+  TRAIN_TEACHER_PATH_LIST: ["data/aux_predictions/k400_ego_predicts.pkl", "data/aux_predictions/k400_IN_predicts.pkl"]
+LOSS:
+  CE_LOSS_WEIGHT: 0.5
+
+
+
